@@ -11,7 +11,7 @@ if not binding_keys:
     sys.stderr.write("Usage: %s [binding_key]...\n" % sys.argv[0])
     sys.exit(1)
 
-client = mbus.connect('192.168.3.50', 5672)
+client = mbus.connect('localhost', 5672)
 
 for binding_key in binding_keys:
     client.subscribe(binding_key, my_print)
