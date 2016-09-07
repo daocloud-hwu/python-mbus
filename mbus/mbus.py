@@ -22,7 +22,7 @@ class Mbus:
 
     def subscribe(self, topic, cb):
         if self.queue is None:
-            result = self.chan.queue_declare(exclusive=True)
+            result = self.chan.queue_declare(exclusive=False)
             self.queue = result.method.queue
 
         self.chan.queue_bind(
@@ -45,7 +45,7 @@ class Mbus:
 
     def start_consuming(self):
         if self.queue is None:
-            result = self.chan.queue_declare(exclusive=True)
+            result = self.chan.queue_declare(exclusive=False)
             self.queue = result.method.queue
 
         def process(ch, method, properties, body):
